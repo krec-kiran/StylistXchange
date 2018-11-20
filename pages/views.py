@@ -4,8 +4,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return render(request, 'pages/index.html.j2')
+    return render(request, 'pages/index.html')
 
 
 def about(request):
-    return render(request, 'pages/about.html.j2')
+    return render(request, 'pages/about.html')
