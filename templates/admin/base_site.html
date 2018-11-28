@@ -2,11 +2,17 @@
 {% load static %}
 
 {% block branding %}
-  <h1 id="head">
-    <img src="{% static 'img/logo.png' %}" alt="BT Real Estate", height='50' width='50' class='brand_img'> Admin Area
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+<div class="container">
+<a class="navbar-brand">
+  <h1>
+      <span class="navbar_logo badge badge-secondary text-white">StylistXchange</span>
   </h1>
+  </a>
+  </div>
+</nav>
 {% endblock %}
 
-{% block extrastyle %}
+<!-- {% block extrastyle %}
   <link rel="stylesheet" href="{% static 'css/admin.css' %}">
-{% endblock %}
+{% endblock %} -->

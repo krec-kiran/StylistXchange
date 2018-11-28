@@ -9,7 +9,13 @@ img {
 
 .navbar {
   opacity: 0.9;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+ }
+
+ .navbar_logo {
+   opacity: 0.9;
+   text-transform: capitalize;
+  }
 
 .social a {
   margin-right: 0.4rem; }
