@@ -1,6 +1,5 @@
 ### Django ###
-* linguist-vendored
-*.py linguist-vendored=false*.log
+
 
 *.pot
 *.pyc
