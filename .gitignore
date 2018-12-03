@@ -1,6 +1,7 @@
 ### Django ###
-static/* linguist-vendored
-*.log
+* linguist-vendored
+*.py linguist-vendored=false*.log
+
 *.pot
 *.pyc
 __pycache__/
