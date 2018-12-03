@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% block title %} | Designer Dashboard {% endblock %} {% block content %}
+<section id="showcase-inner" class="py-5 text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">Designer Dashboard</h1>
+        <p class="lead">Manage your account</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item active"> Dashboard</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- Alerts -->
+{% include 'partials/_alerts.html' %}
+
+<section id="dashboard" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h2>Welcome {{ designer.name  }}</h2> {% if clients %}
+        <br>
+        <p>List of clients interested in your designer collection</p>
+        <br>
+        <table id="table_id">
+          <thead>
+            <tr>
+              <th scope="col">Client</th>
+              <th scope="col">Email</th>
+              <th scope="col">Collection</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for c in clients %}
+          <tr>
+              <td>{{ c.name }} </td>
+              <td>{{ c.email }}</td>
+              <td>{{ c.listing }}</td>
+              <td>{{ c.contact_date }} </td>
+              <td><button type="button" class="btn btn-primary">Accept</button><td>
+              <!-- <td><a class="btn btn-primary" >Approve </a>
+            </td> -->
+              <!-- <td><button type="submit" value="Send" form action="{% url 'contact' %}">Accept</button></td> -->
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>You have not recieved any inquiries</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

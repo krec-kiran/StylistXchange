@@ -4,7 +4,19 @@ from django.contrib.auth.models import User
 from contacts.models import Contact
 
 
+def test(request):
+    print('Hello test')
+    # return
+
+    clients = Contact.objects.filter(designer_email=request.user.email)
+    context = {
+        'clients': clients
+    }
+    return render(request, 'accounts/designer_dashboard.html', context)
+
+
 def contact(request):
+    print('Hello test')
     if request.method == 'POST':
         listing_id = request.POST['listing_id']
         listing = request.POST['listing']
@@ -17,7 +29,6 @@ def contact(request):
         realtor_email = request.POST['realtor_email']
         # creative_type = request.POST['creative_type']
         # print(start_date, creative_type)
-
         #  Check if user has made inquiry already
         if request.user.is_authenticated:
             user_id = request.user.id
@@ -29,7 +40,7 @@ def contact(request):
                 return redirect('/listings/' + listing_id)
 
         contact = Contact(listing=listing, listing_id=listing_id, name=name,
-                          email=email, phone=phone, message=message, user_id=user_id)
+                          email=email, phone=phone, message=message, user_id=user_id, designer_email=realtor_email)
 
         contact.save()
 

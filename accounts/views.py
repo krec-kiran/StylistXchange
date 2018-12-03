@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from contacts.models import Contact
+from realtors.models import Realtor
+from django.db import connection
 
 
 def register(request):
@@ -69,10 +71,26 @@ def logout(request):
 
 
 def dashboard(request):
+    username = User.objects.get(id=request.user.id)
     user_contacts = Contact.objects.order_by(
         '-contact_date').filter(user_id=request.user.id)
 
+    # print(user_contacts.name)
+
+    # user_contacts_2 = Contact.objects.filter(name=username)
+    # print(user_contacts_2.name)
+
     context = {
-        'contacts': user_contacts
+        'contacts': user_contacts,
     }
+    if Realtor.objects.filter(name=username).exists():
+        designer = Realtor.objects.get(name=username)
+        clients = Contact.objects.filter(designer_email=request.user.email)
+        context = {
+            'designer': designer,
+            'clients': clients
+        }
+        if designer.is_mvp:
+            return render(request, 'accounts/designer_dashboard.html', context)
+
     return render(request, 'accounts/dashboard.html', context)

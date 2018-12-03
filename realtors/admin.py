@@ -1,6 +1,11 @@
 from django.contrib import admin
 from .models import Realtor
 
-# Register your models here.
 
-admin.site.register(Realtor)
+class RealtorAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'phone',
+                    'email')
+    list_display_links = ('id', 'name')
+
+
+admin.site.register(Realtor, RealtorAdmin)

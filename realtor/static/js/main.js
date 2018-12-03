@@ -7,8 +7,6 @@ setTimeout(function() {
   $('#message').fadeOut('slow');
 }, 3000);
 
-$(function () {
-    $('#datetimepicker1').datetimepicker({
-        format: 'YYYY-MM-DD'
-    })
-});
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );

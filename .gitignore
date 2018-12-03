@@ -1,4 +1,5 @@
 ### Django ###
+static/* linguist-vendored
 *.log
 *.pot
 *.pyc
